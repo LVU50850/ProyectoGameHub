@@ -31,7 +31,7 @@
 
         <button onclick="togglePasswordForm()">Cambiar contraseña</button>
 
-        <form id="password-form" action="/perfil/{{$usuario->id}}/update" method="POST" class="hidden">
+        <form id="password-form" action="{{ url('/perfil/update/'.$usuario->id) }}" method="POST" class="hidden">
             @csrf
             <div class="form-group">
                 <label for="current_password">Contraseña Actual:</label>
