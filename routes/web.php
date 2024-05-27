@@ -22,3 +22,5 @@ Route::post('/bienvenida/juegosAdminJuego', [JuegoController::class, 'guardarJue
 Route::post('/subirJuegos/{id}',[TestController::class, 'subirJuegos']);
 Route::get('/juegos', [JuegoController::class,'mostrarJuegosAdmin']);
 Route::post('/juego/{id}/comentario', [JuegoController::class, 'addComment']) ->name('addComment');
+Route::get('/perfil/{id}', [UsuarioController::class, 'mostrarPerfil']);
+Route::post('/perfil/{id}/update', [UsuarioController::class, 'updateProfile']);

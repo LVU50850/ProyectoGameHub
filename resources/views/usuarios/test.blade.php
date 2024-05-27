@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameHub - Test de Gustos</title>
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/test.css') }}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <div class="logo">GameHub</div>
+    </header>
     <div class="quiz-container">
         <h1>Test de Gustos</h1>
-
+        <div class = "questions-wrapper">
          <!-- Primera pregunta: ¿Alguna vez has jugado algún videojuego? -->
-         <div class="question">
+         <div class="question active">
             <p class="question-text">¿Alguna vez has jugado algún videojuego?</p>
             <div class="answers">
                 <label><input type="radio" name="has_played" value="si"> Sí</label><br>
                 <label><input type="radio" name="has_played" value="no"> No</label><br>
             </div>
-            <button onclick="showNextQuestion()">Continuar</button>
+            <button onclick = "showNextQuestion()">Continuar</button>
         </div>
         <!-- Sección para preguntas de usuarios que no han jugado videojuegos -->
         <div class="not-played-questions hidden">
@@ -30,6 +35,8 @@
                     <label><input type="radio" name="answer1" class = "respuesta3"> Historia</label><br>
                     <label><input type="radio" name="answer1" class = "respuesta4"> Competitivas</label><br>
                 </div>
+                <button onclick="showNextQuestion()">Siguiente</button>
+                <button onclick="showPreviousQuestion()">Anterior</button>
             </div>
 
             <div class="question">
@@ -175,7 +182,7 @@
             </div>
         </div>
 
-
+</div>
     </div>
 
     <script src="{{ asset('js/test.js') }}"></script>

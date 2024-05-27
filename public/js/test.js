@@ -1,3 +1,5 @@
+// test.js
+
 let answerCounts = {
     respuesta1: 0,
     respuesta2: 0,
@@ -5,59 +7,119 @@ let answerCounts = {
     respuesta4: 0
 };
 
-function showNextQuestion() {
-    const hasPlayedRadio = document.querySelector('input[name="has_played"]:checked');
+document.addEventListener('DOMContentLoaded', () => {
+    const questions = document.querySelectorAll('.question');
+    const initialNextButton = document.querySelector('.question .next-button');
+    const playedQuestionsContainer = document.querySelector('.played-questions');
+    const notPlayedQuestionsContainer = document.querySelector('.not-played-questions');
+    let currentQuestionIndex = 0;
 
-    if (!hasPlayedRadio) {
-        alert('Por favor, selecciona una opción para continuar.');
-        return;
+    function showNextQuestion() {
+        const currentQuestion = questions[currentQuestionIndex];
+        const selectedAnswer = currentQuestion.querySelector('input[type="radio"]:checked');
+
+        if (!selectedAnswer) {
+            alert('Por favor, selecciona una opción para continuar.');
+            return;
+        }
+
+        const nextQuestion = currentQuestion.nextElementSibling;
+
+        if (nextQuestion && !nextQuestion.classList.contains('question')) {
+            // Handle logic for the first question's answer (has_played)
+            const hasPlayed = selectedAnswer.value;
+
+            if (hasPlayed === 'si') {
+                // Mostrar preguntas para usuarios que han jugado videojuegos
+                playedQuestionsContainer.classList.remove('hidden');
+                playedQuestionsContainer.querySelector('.question').classList.add('active');
+            } else {
+                // Mostrar preguntas para usuarios que no han jugado videojuegos
+                notPlayedQuestionsContainer.classList.remove('hidden');
+                notPlayedQuestionsContainer.querySelector('.question').classList.add('active');
+            }
+        } else if (nextQuestion) {
+            // Continue to next question within the same section
+            currentQuestion.classList.remove('active');
+            currentQuestion.classList.add('hidden');
+            nextQuestion.classList.remove('hidden');
+            nextQuestion.classList.add('active');
+            currentQuestionIndex++;
+        }
     }
 
-    const hasPlayed = hasPlayedRadio.value;
+    initialNextButton.addEventListener('click', showNextQuestion);
 
-    // Ocultar pregunta actual
-    document.querySelector('.question').classList.add('hidden');
+    playedQuestionsContainer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('next-button')) {
+            const currentQuestion = playedQuestionsContainer.querySelector('.question.active');
+            const selectedAnswer = currentQuestion.querySelector('input[type="radio"]:checked');
 
-    if (hasPlayed === 'si') {
-        // Mostrar preguntas para usuarios que han jugado videojuegos
-        document.querySelector('.played-questions').classList.remove('hidden');
+            if (!selectedAnswer) {
+                alert('Por favor, selecciona una opción para continuar.');
+                return;
+            }
 
-    } else {
-        // Mostrar preguntas para usuarios que no han jugado videojuegos
-        document.querySelector('.not-played-questions').classList.remove('hidden');
-    }
-}
+            const nextQuestion = currentQuestion.nextElementSibling;
+
+            if (nextQuestion) {
+                currentQuestion.classList.remove('active');
+                currentQuestion.classList.add('hidden');
+                nextQuestion.classList.remove('hidden');
+                nextQuestion.classList.add('active');
+            }
+        }
+    });
+
+    notPlayedQuestionsContainer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('next-button')) {
+            const currentQuestion = notPlayedQuestionsContainer.querySelector('.question.active');
+            const selectedAnswer = currentQuestion.querySelector('input[type="radio"]:checked');
+
+            if (!selectedAnswer) {
+                alert('Por favor, selecciona una opción para continuar.');
+                return;
+            }
+
+            const nextQuestion = currentQuestion.nextElementSibling;
+
+            if (nextQuestion) {
+                currentQuestion.classList.remove('active');
+                currentQuestion.classList.add('hidden');
+                nextQuestion.classList.remove('hidden');
+                nextQuestion.classList.add('active');
+            }
+        }
+    });
+});
+
 
 function showPreviousQuestion() {
-    const currentQuestion = document.querySelector('.question:not(.hidden)');
-    currentQuestion.classList.add('hidden');
-
+    const currentQuestion = document.querySelector('.question.active');
     const previousQuestion = currentQuestion.previousElementSibling;
-    previousQuestion.classList.remove('hidden');
+
+    if (previousQuestion) {
+        currentQuestion.classList.remove('active');
+        currentQuestion.classList.add('hidden');
+        previousQuestion.classList.remove('hidden');
+        previousQuestion.classList.add('active');
+    }
 }
 
-// Manejar las respuestas y recomendar juegos
 function handleAnswerSelection(answerName) {
-    console.log(answerName+ "+1");
     answerCounts[answerName]++;
-
-    // Recomendar juegos basados en las respuesta
 }
 
-// Asociar función a eventos de cambio en las respuestas
-function alClickar(){
-    console.log("hola");
+function alClickar() {
     const answers = document.querySelectorAll('input[type="radio"]');
     answers.forEach(answer => {
-        if(answer.checked)
+        if (answer.checked)
             handleAnswerSelection(answer.getAttribute('class'));
-            console.log(answer.getAttribute('class'));
     });
     showGames();
-
 }
 
-function showGames(){
+function showGames() {
     let recommendedGames;
 
     if (answerCounts.respuesta1 > answerCounts.respuesta2) {
@@ -71,13 +133,8 @@ function showGames(){
     }
 
     const userId = window.location.pathname.split('/').pop();
-    console.log(userId);
 
-    // Suponiendo que tienes el cálculo de juegos recomendados en JavaScript
-
-    // Obtener el token CSRF
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    console.log(csrfToken);
 
     fetch(`/subirJuegos/${userId}`, {
         method: 'POST',
@@ -95,10 +152,8 @@ function showGames(){
     })
     .then(data => {
         console.log('Respuesta del servidor:', data);
-        // Puedes manejar la respuesta aquí, mostrar un mensaje, etc.
     })
     .catch(error => {
         console.error('Error al enviar los juegos recomendados:', error);
     });
 }
-

@@ -31,7 +31,10 @@
             @enderror
             <br><br>
             <input type = "submit" value = "Entrar">
+
+        </form>
+        <a href="/bienvenida" class="button">Volver</a>
     </div>
-</form>
+
 </body>
 </html>

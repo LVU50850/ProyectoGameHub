@@ -12,10 +12,15 @@ function generarFormulario() {
     nombreInput.setAttribute('name', 'nombre');
     nombreInput.setAttribute('placeholder', 'Nombre del juego');
 
+    const descripcionInput = document.createElement('input');
+    descripcionInput.setAttribute('type','text');
+    descripcionInput.setAttribute('name', 'descripcion');
+    descripcionInput.setAttribute('placeholder', 'Descripcion del juego');
+
     const imagenInput = document.createElement('input');
     imagenInput.setAttribute('type', 'file');
     imagenInput.setAttribute('name', 'imagen');
-    imagenInput.setAttribute('accept', 'image/*'); // Aceptar solo archivos de imagen
+    imagenInput.setAttribute('accept', 'image/*');
 
     const submitButton = document.createElement('input');
     submitButton.setAttribute('type', 'submit');
@@ -23,6 +28,8 @@ function generarFormulario() {
 
     // Agregar los elementos al formulario
     form.appendChild(nombreInput);
+    form.appendChild(document.createElement('br'));
+    form.appendChild(descripcionInput);
     form.appendChild(document.createElement('br')); // Salto de línea
     form.appendChild(imagenInput);
     form.appendChild(document.createElement('br')); // Salto de línea

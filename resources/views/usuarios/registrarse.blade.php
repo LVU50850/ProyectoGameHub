@@ -21,10 +21,16 @@
             @error('email')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-
-            <input type="submit" value = "Registrarse">
+            @error('nombre')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            @error('contrasenia')
+                <div class = "alert alert-danger">{{ $message }}</div>
+            @enderror
+            <input type="submit" value="Registrarse">
         </form>
-        <a href = "/bienvenida"><button class = "button">Volver</button></a>
+        <a href="/bienvenida" class="button">Volver</a>
     </div>
 </body>
 </html>
+

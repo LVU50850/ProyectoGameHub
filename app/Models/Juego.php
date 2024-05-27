@@ -14,7 +14,7 @@ class Juego extends Model
 
     protected $primaryKey = "id";
 
-    protected $fillable = ['nombre','usuario','imagen','comentario'];
+    protected $fillable = ['nombre','descripcion','usuario','imagen','comentario'];
     protected $attributes = [
         'usuario' => 'admin', // Valor por defecto para el campo 'usuario'
         'comentario' => '',   // Valor por defecto para el campo 'comentario'

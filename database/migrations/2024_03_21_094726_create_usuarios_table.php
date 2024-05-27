@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nombre',30);
             $table->string('contrasenia',15);
             $table->string('email',30);
+            $table->string('avatar',30);
+            $table->string('juegos',50);
             $table->timestamps();
         });
     }

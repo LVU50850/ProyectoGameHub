@@ -14,9 +14,10 @@ class Usuario extends Model
 
     protected $primaryKey = "id";
 
-    protected $fillable = ['nombre','contrasenia','email', 'juegos'];
+    protected $fillable = ['nombre','contrasenia','email', 'juegos', 'avatar'];
     protected $attributes = [
         'juegos' => 'NOGAMES', // Valor por defecto para el campo 'usuario'
+        'avatar' => 'img',
     ];
 
     protected $hidden = ['id'];

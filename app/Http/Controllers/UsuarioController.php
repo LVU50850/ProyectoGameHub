@@ -20,22 +20,41 @@ class UsuarioController extends Controller
     }
 
     public function registrarUsuario(Request $request){
-        $request->validate([
+        $rules = [
             'nombre' => 'required|string|max:255',
             'contrasenia' => 'required|string|min:5',
             'email' => 'required|string|email|unique:usuarios,email', // Verifica la unicidad del email en la tabla usuarios
-        ]);
+        ];
 
-        // Verificar si el email ya está en uso
-        $emailExistente = Usuario::where('email', $request->email)->first();
-        if ($emailExistente) {
-            return redirect()->back()->withInput()->withErrors(['email' => 'Este email ya está registrado. Por favor, utiliza otro email.']);
+        // Define mensajes personalizados para las reglas de validación
+        $messages = [
+            'nombre.required' => 'El nombre de usuario es obligatorio.',
+            'nombre.string' => 'El nombre de usuario debe ser una cadena de texto.',
+            'nombre.max' => 'El nombre de usuario no puede tener más de 255 caracteres.',
+            'contrasenia.required' => 'La contraseña es obligatoria.',
+            'contrasenia.string' => 'La contraseña debe ser una cadena de texto.',
+            'contrasenia.min' => 'La contraseña debe tener al menos 5 caracteres.',
+            'email.required' => 'El email es obligatorio.',
+            'email.string' => 'El email debe ser una cadena de texto.',
+            'email.email' => 'Por favor ingresa un email válido.',
+            'email.unique' => 'Este email ya está registrado. Por favor, utiliza otro email.',
+        ];
+
+        // Ejecuta la validación
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // Verifica si la validación ha fallado
+        if ($validator->fails()) {
+            // Redirige de vuelta con los errores y los campos anteriores
+            return redirect()->back()
+                             ->withErrors($validator) // Enviar errores a la vista
+                             ->withInput(); // Mantener los datos anteriores en el formulario
         }
 
-        // Crear el nuevo usuario si la validación pasa y el email no está en uso
+        // Crear el nuevo usuario si la validación pasa
         $usuario = new Usuario([
             'nombre' => $request->nombre,
-            'contrasenia' =>($request->contrasenia),
+            'contrasenia' => ($request->contrasenia), // Asegúrate de encriptar la contraseña
             'email' => $request->email,
         ]);
 
@@ -49,7 +68,6 @@ class UsuarioController extends Controller
     }
 
     public function entrarUsuario(Request $request){
-
         $rules = [
             'nombre' => [
                 'required',
@@ -106,7 +124,6 @@ class UsuarioController extends Controller
                 $juegos = Juego::all();
                 return response()->view("usuarios.juegosAdmin", ['juegos'=> $juegos]);
             }else{
-
                 if($usuario->juegos == "NOGAMES"){
                     return response()->view('usuarios.indexTest', ['usuario' => $usuario]);
                 }else{
@@ -119,16 +136,44 @@ class UsuarioController extends Controller
         }
     }
 
+
     public function entrarJuegos($id){
         $usuario= Usuario::find($id);
 
         $juegos = Juego::all();
+
+
 
         return response()->view('usuarios.juegos',['usuario' => $usuario, 'juegos' => $juegos]);
     }
 
     public function entrarJuegosAdmin(){
         return response()->view('usuarios.juegosAdmin');
+    }
+    public function mostrarPerfil($id){
+        $usuario= Usuario::find($id);
+        return response()->view('usuarios.perfil',['usuario' => $usuario]);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'La contraseña actual no es correcta.']);
+        }
+
+        $user->name = $request->name;
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('status', 'Perfil actualizado correctamente.');
     }
 
 }

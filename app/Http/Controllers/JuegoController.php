@@ -13,13 +13,17 @@ class JuegoController extends Controller
 
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validar que la imagen sea válida
+            'descripcion' => 'required|string|max:255',
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        $imagenPath = $request->file('imagen')->store('images','public');
 
         // Crear un nuevo juego en la base de datos
         $juego = new Juego();
         $juego->nombre = $request->input('nombre');
-        $juego->imagen = $request->file('imagen'); // Guardar la ruta de la imagen en la base de datos
+        $juego->imagen = $imagenPath;
+        $juego->descripcion = $request->input('descripcion');// Guardar la ruta de la imagen en la base de datos
         $juego->save();
 
         // Devolver una respuesta (puedes ajustar según tus necesidades)
