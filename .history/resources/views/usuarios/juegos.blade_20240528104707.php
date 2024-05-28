@@ -33,18 +33,17 @@
                 <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
                 <p><strong>Comentarios:</strong></p>
                 <ul>
-            @foreach($juego->comentarios as $comentario)
-                <li>{{ $comentario->texto }} - <em>{{ $comentario->usuario?->nombre }}</em></li>
-            @endforeach
+                @foreach($juego->comentarios as $comentario)
+                    <li>{{ $comentario->texto }} - <em>{{ $comentario->user->nombre }}</em></li>
+                @endforeach
         </ul>
                 <!-- Formulario para añadir comentario -->
                 <!-- Formulario para añadir comentario -->
-                <form action="{{ route('addComment', ['juego_id' => $juego->id, 'usuario_id' => $usuario->id]) }}" method="POST">
-    @csrf
-    <textarea name="comentario" placeholder="Añadir un comentario"></textarea><br>
-    <button type="submit">Añadir comentario</button>
-</form>
-
+        <form action="{{ route('addComment', $juego->id) }}" method="POST">
+            @csrf
+            <textarea name="comentario" placeholder="Añadir un comentario"></textarea><br>
+            <button type="submit">Añadir comentario</button>
+        </form>
             </div>
         @endforeach
     </div>

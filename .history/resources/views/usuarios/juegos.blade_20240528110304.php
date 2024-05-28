@@ -34,7 +34,7 @@
                 <p><strong>Comentarios:</strong></p>
                 <ul>
             @foreach($juego->comentarios as $comentario)
-                <li>{{ $comentario->texto }} - <em>{{ $comentario->usuario?->nombre }}</em></li>
+                <li>{{ $comentario->texto }} - <em>{{ $comentario->usuario->nombre }}</em></li>
             @endforeach
         </ul>
                 <!-- Formulario para añadir comentario -->

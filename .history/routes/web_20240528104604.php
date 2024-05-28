@@ -25,5 +25,4 @@ Route::post('/juego/{id}/comentario', [JuegoController::class, 'addComment']) ->
 Route::get('/perfil/{id}', [UsuarioController::class, 'mostrarPerfil']);
 Route::post('/perfil/update/{id}', [UsuarioController::class, 'updateProfile']);
 Route::post('perfil/updateFoto/{id}', [UsuarioController::class, 'updateFoto']);
-Route::post('/juegos/{juego_id}/comentarios/{usuario_id}', [JuegoController::class, 'addComment'])->name('addComment');
 

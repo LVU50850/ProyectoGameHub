@@ -38,20 +38,19 @@ class JuegoController extends Controller
         return view("juegosAdmin",compact('juegos'));
     }
 
-    public function addComment(Request $request, $juego_id, $usuario_id)
-    {
-        $request->validate([
-            'comentario' => 'required|string|max:255',
-        ]);
+    public function addComment(Request $request, $juego_id)
+{
+    $request->validate([
+        'comentario' => 'required|string|max:255',
+    ]);
 
-        Comentario::create([
-            'texto' => $request->input('comentario'),
-            'user_id' => $usuario_id,
-            'juego_id' => $juego_id,
-        ]);
+    Comentario::create([
+        'texto' => $request->input('comentario'),
+        'user_id' => auth()->id(), // O el método que uses para obtener el ID del usuario actual
+        'juego_id' => $juego_id,
+    ]);
 
-        return back()->with('success', 'Comentario añadido correctamente');
-    }
-
+    return back()->with('success', 'Comentario añadido correctamente');
+}
 
 }

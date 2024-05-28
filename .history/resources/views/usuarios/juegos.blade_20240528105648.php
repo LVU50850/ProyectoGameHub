@@ -33,9 +33,9 @@
                 <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
                 <p><strong>Comentarios:</strong></p>
                 <ul>
-            @foreach($juego->comentarios as $comentario)
-                <li>{{ $comentario->texto }} - <em>{{ $comentario->usuario?->nombre }}</em></li>
-            @endforeach
+                @foreach($juego->comentarios as $comentario)
+    <li>{{ $comentario->texto }} - <em>{{ $comentario->usuario?->nombre }}</em></li>
+@endforeach
         </ul>
                 <!-- Formulario para añadir comentario -->
                 <!-- Formulario para añadir comentario -->
