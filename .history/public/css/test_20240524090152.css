@@ -1,0 +1,49 @@
+/* test.css */
+
+.hidden {
+    display: none;
+}
+
+.questions-wrapper {
+    position: relative;
+}
+
+.question {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.question.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.question .answers label {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: 0.5s;
+}
+
+.question .answers label:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.question .answers label:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+.question .answers label:nth-child(4) {
+    animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
