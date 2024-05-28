@@ -27,7 +27,7 @@
                         {{ $comentario->texto }} - <em>{{ $comentario->usuario?->nombre }}</em>
                         <form action="{{ route('deleteComment', $comentario->id) }}" method="POST" style="display:inline;">
                             @csrf
-                            @method('DELETE')
+                            @method('POST')
                             <button type="submit">Eliminar</button>
                         </form>
                     </li>
@@ -35,7 +35,7 @@
             </ul>
             <form action="{{ route('deleteJuego', $juego->id) }}" method="POST" style="display:inline;">
                 @csrf
-                @method('DELETE')
+                @method('POST')
                 <button type="submit">Eliminar Juego</button>
             </form>
         </div>

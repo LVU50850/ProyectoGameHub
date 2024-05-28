@@ -58,7 +58,7 @@ class JuegoController extends Controller
         $juego = Juego::find($id);
         if ($juego) {
             $juego->delete();
-            return redirect()->route("usuarios.juegosAdmin");
+            return redirect()->route("usuarios.juegosAdmin")
         }
         return back()->withErrors(['error' => 'Juego no encontrado']);
     }
@@ -68,7 +68,7 @@ class JuegoController extends Controller
         $comentario = Comentario::find($id);
         if ($comentario) {
             $comentario->delete();
-            return redirect()->route("usuarios.juegosAdmin");
+            return back()->with('success', 'Comentario eliminado correctamente');
         }
         return back()->withErrors(['error' => 'Comentario no encontrado']);
     }

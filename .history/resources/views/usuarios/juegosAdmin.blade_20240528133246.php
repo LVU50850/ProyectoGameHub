@@ -35,7 +35,7 @@
             </ul>
             <form action="{{ route('deleteJuego', $juego->id) }}" method="POST" style="display:inline;">
                 @csrf
-                @method('DELETE')
+                @method('POST')
                 <button type="submit">Eliminar Juego</button>
             </form>
         </div>

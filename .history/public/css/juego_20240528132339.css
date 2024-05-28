@@ -80,23 +80,17 @@ textarea {
     margin-bottom: 10px;
 }
 
-button {
+button.reset-button {
     all: unset; /* Resetea todos los estilos */
     background-color: #ff4d4d;
     color: white;
-    padding: 2px 5px;
+    border: none;
+    padding: 5px 10px;
     cursor: pointer;
-    border: none; /* Elimina el borde */
-    border-radius: 4px; /* Añade bordes redondeados */
-    font-size: 14px; /* Ajusta el tamaño del texto */
-    text-align: center; /* Centra el texto dentro del botón */
-    display: inline-block; /* Asegura que el botón se comporte correctamente */
+    display: inline-block; /* Para asegurarse de que el botón se comporte correctamente */
+    text-align: center; /* Centrar el texto dentro del botón */
 }
 
-button:hover {
+button.reset-button:hover {
     background-color: #ff1a1a;
-}
-
-form{
-    all:unset;
 }

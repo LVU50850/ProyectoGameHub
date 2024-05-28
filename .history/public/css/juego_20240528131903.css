@@ -81,22 +81,12 @@ textarea {
 }
 
 button {
-    all: unset; /* Resetea todos los estilos */
     background-color: #ff4d4d;
     color: white;
-    padding: 2px 5px;
+    border: none;
     cursor: pointer;
-    border: none; /* Elimina el borde */
-    border-radius: 4px; /* Añade bordes redondeados */
-    font-size: 14px; /* Ajusta el tamaño del texto */
-    text-align: center; /* Centra el texto dentro del botón */
-    display: inline-block; /* Asegura que el botón se comporte correctamente */
 }
 
 button:hover {
     background-color: #ff1a1a;
-}
-
-form{
-    all:unset;
 }

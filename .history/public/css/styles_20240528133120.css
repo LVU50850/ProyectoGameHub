@@ -1,0 +1,122 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #222;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+header .logo {
+    color: #FFA500;
+    font-family: 'Bangers', cursive;
+    font-size: 2em;
+    margin: 0;
+}
+
+/* Welcome Container */
+.welcome-container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #222;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 80px; /* Space for the fixed header */
+}
+
+/* Main Title */
+.main-title {
+    font-family: 'Bangers', cursive;
+    color: #FFA500;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+/* Button Container */
+.button-container {
+    margin-top: 20px;
+}
+
+
+
+.button:hover {
+    background-color: #ff8500;
+}
+
+/* Form Styles */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #FFA500;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff8500;
+}
+
+/* Alert */
+.alert.alert-danger {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+.filter {
+    margin-bottom: 20px;
+}
+
+.filter label {
+    font-family: 'Bangers', cursive;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.filter input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}

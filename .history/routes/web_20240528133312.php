@@ -27,5 +27,4 @@ Route::post('/perfil/update/{id}', [UsuarioController::class, 'updateProfile']);
 Route::post('perfil/updateFoto/{id}', [UsuarioController::class, 'updateFoto']);
 Route::post('/juegos/{juego_id}/comentarios/{usuario_id}', [JuegoController::class, 'addComment'])->name('addComment');
 Route::delete('/juegos/{id}', [JuegoController::class, 'deleteJuego'])->name('deleteJuego');
-Route::delete('/comentarios/{id}', [JuegoController::class, 'deleteComment'])->name('deleteComment');
-Route::get('/bienvenida/juegosAdmin', [JuegoController::class, 'index'])->name('juegos.list');
+Route::post('/comentarios/{id}', [JuegoController::class, 'deleteComment'])->name('deleteComment');
