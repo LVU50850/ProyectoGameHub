@@ -13,7 +13,7 @@
     <header>
         <div class="logo">GameHub</div>
         <div class="user-profile" onclick="toggleDropdown()">
-            <img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon">
+            <img src="{{ asset('images/monigote.jpg') }}" alt="Perfil" class="profile-icon">
             <span>{{ $usuario->nombre }}</span>
             <div class="dropdown-content hidden">
                 <a href="/perfil/{{$usuario->id}}">Configuración</a>
@@ -31,11 +31,11 @@
             <div class="juego">
                 <h2>{{ $juego->nombre }}</h2>
                 <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
-                <p><strong>Descripción:</strong>{{ $juego->descripcion }}</p>
+                <p><strong>Descripción:</strong>{{ $juego->descripcion} }</p>
                 <p><strong>Comentarios:</strong></p>
                 <ul>
             @foreach($juego->comentarios as $comentario)
-                <li><img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon"><em>{{ $comentario->usuario?->nombre }} - </em>{{ $comentario->texto }}</li>
+                <li><img src="{{ asset('images/monigote.jpg') }}" alt="Perfil" class="profile-icon"><em>{{ $comentario->usuario?->nombre }} - </em>{{ $comentario->texto }}</li>
             @endforeach
         </ul>
                 <!-- Formulario para añadir comentario -->

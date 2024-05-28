@@ -35,7 +35,7 @@
                 <p><strong>Comentarios:</strong></p>
                 <ul>
             @foreach($juego->comentarios as $comentario)
-                <li><img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon"><em>{{ $comentario->usuario?->nombre }} - </em>{{ $comentario->texto }}</li>
+                <li><img src="{{ asset('images/monigote.jpg') }}" alt="Perfil" class="profile-icon"><em>{{ $comentario->usuario?->nombre }} - </em>{{ $comentario->texto }}</li>
             @endforeach
         </ul>
                 <!-- Formulario para añadir comentario -->
