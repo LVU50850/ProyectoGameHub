@@ -47,9 +47,9 @@
     <textarea name="comentario" placeholder="Añadir un comentario"></textarea><br>
     <button type="submit">Añadir comentario</button>
     <form action="{{ route('addToFavorites', $juego->id) }}" method="POST">
-        @csrf
-        <input type="hidden" name="user_id" value="{{ $usuario->id }}">
-        <button type="submit" class="favorito-btn">Añadir a favoritos</button>
+    @csrf
+    <input type="hidden" name="user_id" value="{{ $usuario->id }}">
+    <button type="submit" class="favorito-btn">Añadir a favoritos</button>
 </form>
 </form>
 

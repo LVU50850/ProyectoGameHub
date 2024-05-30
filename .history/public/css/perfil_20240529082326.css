@@ -17,10 +17,6 @@ h1 {
     justify-content: space-between;
     align-items: flex-start;
 }
-.logo {
-    font-family: 'Bangers', cursive;
-    font-size: 24px;
-}
 
 .avatar-section {
     flex: 1;
@@ -46,20 +42,17 @@ h1 {
 }
 
 button {
-    all: unset; /* Resetea todos los estilos */
-    background-color: #ff4d4d;
-    color: white;
-    padding: 2px 5px;
+    display: block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
     cursor: pointer;
-    border: none; /* Elimina el borde */
-    border-radius: 4px; /* Añade bordes redondeados */
-    font-size: 14px; /* Ajusta el tamaño del texto */
-    text-align: center; /* Centra el texto dentro del botón */
-    display: inline-block; /* Asegura que el botón se comporte correctamente */
 }
 
 button:hover {
-    background-color: #ff1a1a;
+    background-color: #555;
 }
 
 .hidden {
@@ -110,7 +103,4 @@ h2{
 }
 .imagen{
     text-align: center;
-}
-header{
-    font-family: 'Bangers', cursive;
 }

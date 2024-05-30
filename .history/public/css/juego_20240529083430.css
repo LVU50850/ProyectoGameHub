@@ -96,12 +96,11 @@ button {
 button:hover {
     background-color: #ff1a1a;
 }
-.favorito-btn{
-    margin-left:945px;
-    background-color: green;
-}
 
 form{
     all:unset;
 }
-
+.form-actions button.favorito-btn {
+    background-color: #ff4d4d;
+    margin-left: 10px;
+}

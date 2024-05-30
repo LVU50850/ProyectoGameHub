@@ -20,10 +20,6 @@ class Usuario extends Model
         'avatar' => 'images/HkvHlCy4hKeGc5I1hgayU962hrpqJX06hrPnzNvv.jpg',
     ];
 
-    protected $casts = [
-        'favoritos' => 'array',
-    ];
-
     protected $hidden = ['id'];
 
     public function comentarios()

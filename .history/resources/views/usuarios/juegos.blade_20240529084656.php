@@ -25,7 +25,7 @@
     </header>
     <br><br><br><br>
     <div class="container">
-        <h1>Todos los juegos</h1>
+        <h1>Listado de juegos</h1>
         @foreach($juegos as $juego)
             <div class="juego">
                 <h2>{{ $juego->nombre }}</h2>
@@ -46,11 +46,7 @@
     @csrf
     <textarea name="comentario" placeholder="Añadir un comentario"></textarea><br>
     <button type="submit">Añadir comentario</button>
-    <form action="{{ route('addToFavorites', $juego->id) }}" method="POST">
-        @csrf
-        <input type="hidden" name="user_id" value="{{ $usuario->id }}">
-        <button type="submit" class="favorito-btn">Añadir a favoritos</button>
-</form>
+    <button type="button" class="favorito-btn">Añadir a favoritos</button>
 </form>
 
             </div>

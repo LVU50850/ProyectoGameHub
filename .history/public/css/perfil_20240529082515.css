@@ -1,5 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
+    color:orange;
 }
 
 .container {
@@ -16,10 +17,6 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-}
-.logo {
-    font-family: 'Bangers', cursive;
-    font-size: 24px;
 }
 
 .avatar-section {

@@ -31,7 +31,7 @@ class UsuarioController extends Controller
             'nombre.required' => 'El nombre de usuario es obligatorio.',
             'nombre.string' => 'El nombre de usuario debe ser una cadena de texto.',
             'nombre.max' => 'El nombre de usuario no puede tener más de 255 caracteres.',
-            'nombre.unique' => 'El nombre de usuario ya está registrado. Por favor, utiliza otro nombre',
+            'nombre.unique' => 'El nombre de usuario ya está registrado. Por favor, utiliza otro nombre'
             'contrasenia.required' => 'La contraseña es obligatoria.',
             'contrasenia.string' => 'La contraseña debe ser una cadena de texto.',
             'contrasenia.min' => 'La contraseña debe tener al menos 5 caracteres.',
