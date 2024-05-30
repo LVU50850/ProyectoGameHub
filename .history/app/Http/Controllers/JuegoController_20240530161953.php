@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 
 use App\Models\Juego;
 use App\Models\Comentario;
-use App\Models\Usuario;
 
 class JuegoController extends Controller
 {
@@ -75,6 +74,7 @@ class JuegoController extends Controller
     }
     public function addToFavorites(Request $request, $juego_id)
 {
+    dd("hola");
     $user_id = $request->input('user_id');
     $usuario = Usuario::find($user_id);
 

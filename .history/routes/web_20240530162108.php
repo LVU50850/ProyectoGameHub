@@ -29,5 +29,5 @@ Route::post('/juegos/{juego_id}/comentarios/{usuario_id}', [JuegoController::cla
 Route::delete('/juegos/{id}', [JuegoController::class, 'deleteJuego'])->name('deleteJuego');
 Route::delete('/comentarios/{id}', [JuegoController::class, 'deleteComment'])->name('deleteComment');
 Route::get('/bienvenida/juegosAdmin', [JuegoController::class, 'index'])->name('juegos.list');
-Route::post('/juegos/favoritos/{juego}', [JuegoController::class, 'addToFavorites']);
+Route::post('/juegos/{juego}/favoritos', [JuegoController::class, 'addToFavorites']);
 

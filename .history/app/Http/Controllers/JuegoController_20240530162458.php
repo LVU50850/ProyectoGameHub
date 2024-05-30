@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 
 use App\Models\Juego;
 use App\Models\Comentario;
-use App\Models\Usuario;
 
 class JuegoController extends Controller
 {

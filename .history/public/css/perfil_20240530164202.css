@@ -1,0 +1,117 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.logo {
+    font-family: 'Bangers', cursive;
+    font-size: 24px;
+}
+
+.avatar-section {
+    flex: 1;
+    text-align: center;
+}
+
+.avatar-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #333;
+    margin-top: 20px;
+}
+
+.info-section {
+    flex: 2;
+    padding: 20px;
+    border-left: 1px solid #ccc;
+}
+
+.user-info p {
+    margin: 10px 0;
+}
+
+button {
+    all: unset; /* Resetea todos los estilos */
+    background-color: #ff4d4d;
+    color: white;
+    padding: 2px 5px;
+    cursor: pointer;
+    border: none; /* Elimina el borde */
+    border-radius: 4px; /* Añade bordes redondeados */
+    font-size: 14px; /* Ajusta el tamaño del texto */
+    text-align: center; /* Centra el texto dentro del botón */
+    display: inline-block; /* Asegura que el botón se comporte correctamente */
+}
+
+button:hover {
+    background-color: #ff1a1a;
+}
+
+.hidden {
+    display: none;
+}
+
+.alert {
+    color: #a94442;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input:focus {
+    border-color: #333;
+}
+
+h2{
+    text-align: center;
+}
+.imagen{
+    text-align: center;
+}
+header{
+    font-family: 'Bangers', cursive;
+}

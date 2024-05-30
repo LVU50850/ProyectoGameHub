@@ -24,8 +24,9 @@
         </div>
     </header>
     <br><br><br><br>
-    <!-- Mostrar mensajes de éxito -->
-    @if (session('success'))
+    @endforeach
+        <!-- Mostrar mensajes de éxito -->
+        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
@@ -77,7 +78,6 @@
 
 
             </div>
-        @endforeach
 
     </div>
 

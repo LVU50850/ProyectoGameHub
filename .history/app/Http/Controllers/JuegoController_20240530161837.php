@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 
 use App\Models\Juego;
 use App\Models\Comentario;
-use App\Models\Usuario;
 
 class JuegoController extends Controller
 {
@@ -82,7 +81,7 @@ class JuegoController extends Controller
         $favoritos = $usuario->favoritos ?: [];
 
         if (!in_array($juego_id, $favoritos)) {
-
+            $dd("hola");
             $favoritos[] = $juego_id;
             $usuario->favoritos = $favoritos;
             $usuario->save();

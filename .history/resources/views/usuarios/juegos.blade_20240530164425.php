@@ -24,28 +24,6 @@
         </div>
     </header>
     <br><br><br><br>
-    <!-- Mostrar mensajes de éxito -->
-    @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <!-- Mostrar mensajes de información -->
-        @if (session('info'))
-            <div class="alert alert-danger">
-                {{ session('info') }}
-            </div>
-        @endif
-
-        <!-- Mostrar mensajes de error -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                    <p class="alert alert-danger">{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
     <div class="container">
         <h1>Todos los juegos</h1>
         @foreach($juegos as $juego)
@@ -74,11 +52,31 @@
         <input type="hidden" name="user_id" value="{{ $usuario->id }}">
         <button type="submit" class="favorito-btn">Añadir a favoritos</button>
     </form>
+            <!-- Mostrar mensajes de éxito -->
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
+        <!-- Mostrar mensajes de información -->
+        @if (session('info'))
+            <div class="alert alert-info">
+                {{ session('info') }}
+            </div>
+        @endif
+
+        <!-- Mostrar mensajes de error -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <p class="alert alert-danger">{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
 
             </div>
         @endforeach
-
     </div>
 
     <script>
