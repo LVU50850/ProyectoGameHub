@@ -147,17 +147,10 @@ class UsuarioController extends Controller
 
         return response()->view('usuarios.juegos',['usuario' => $usuario, 'juegos' => $juegos]);
     }
-    public function verFavoritos($id) {
-        $usuario = Usuario::find($id);
+    public function verFavoritos($id){
+        $usuario= Usuario::find($id);
 
-        if (!$usuario) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
-        }
-
-        $favoritos = $usuario->favoritos ?: []; // Asegurarse de que sea un array
-        $juegosFavoritos = Juego::whereIn('id', $favoritos)->get();
-
-        return view('usuarios.favoritos', ['usuario' => $usuario, 'juegos' => $juegosFavoritos]);
+        $juegosFavoritos = Juego::whereIn('id',$usuario->favoritos)->get();
     }
 
     public function entrarJuegosAdmin(){

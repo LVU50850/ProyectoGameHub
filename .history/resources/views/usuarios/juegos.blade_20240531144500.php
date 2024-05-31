@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id = "juegos-container">
     <header>
         <div class="logo">GameHub</div>
         <div class="user-profile" onclick="toggleDropdown()">
@@ -92,11 +93,11 @@
 
 
                 </div>
-                </div>
+
             @endforeach
 
         </div>
-
+</div>
     <script>
         function toggleDropdown() {
             document.querySelector('.dropdown-content').classList.toggle('hidden');

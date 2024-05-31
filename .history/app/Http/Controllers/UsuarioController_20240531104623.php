@@ -21,7 +21,7 @@ class UsuarioController extends Controller
 
     public function registrarUsuario(Request $request){
         $rules = [
-            'nombre' => 'required|string|unique:usuarios,nombre|max:255',
+            'nombre' => 'required|string|unique|max:255',
             'contrasenia' => 'required|string|min:5',
             'email' => 'required|string|email|unique:usuarios,email', // Verifica la unicidad del email en la tabla usuarios
         ];
@@ -146,18 +146,6 @@ class UsuarioController extends Controller
 
 
         return response()->view('usuarios.juegos',['usuario' => $usuario, 'juegos' => $juegos]);
-    }
-    public function verFavoritos($id) {
-        $usuario = Usuario::find($id);
-
-        if (!$usuario) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
-        }
-
-        $favoritos = $usuario->favoritos ?: []; // Asegurarse de que sea un array
-        $juegosFavoritos = Juego::whereIn('id', $favoritos)->get();
-
-        return view('usuarios.favoritos', ['usuario' => $usuario, 'juegos' => $juegosFavoritos]);
     }
 
     public function entrarJuegosAdmin(){

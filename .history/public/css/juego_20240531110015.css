@@ -117,21 +117,3 @@ form{
     all:unset;
 }
 
-.filter {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.filter label {
-    font-family: 'Bangers', cursive;
-    font-size: 18px;
-    margin-right: 10px;
-    color: #FFA500;
-}
-
-.filter input[type="radio"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-

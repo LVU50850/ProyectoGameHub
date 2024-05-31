@@ -46,82 +46,62 @@
                 @endforeach
             </div>
         @endif
+    <div class="container">
         <div class="container">
         <div class="filter">
             <label>
-                <input type="radio" name="filter" value="all" checked onclick="filterJuegos('all')">
+                <input type="radio" name="filter" value="all" checked>
                 Todos los juegos
             </label>
             <label>
-                <input type="radio" name="filter" value="favorites" onclick="filterJuegos('favorites')">
+                <input type="radio" name="filter" value="favorites">
                 Juegos favoritos
             </label>
             <label>
-                <input type="radio" name="filter" value="recommended" onclick="filterJuegos('recommended')">
+                <input type="radio" name="filter" value="recommended">
                 Juegos recomendados
             </label>
         </div>
         <h1>Todos los juegos</h1>
         @foreach($juegos as $juego)
-            <div id = "juegos-container">
-                <div class="juego">
-                    <h2>{{ $juego->nombre }}</h2>
-                    <div class = "imagen">
-                        <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
-                    </div>
-                    <p><strong>Descripción:</strong>{{ $juego->descripcion }}</p>
-                    <p><strong>Comentarios:</strong></p>
-                    <ul>
-                @foreach($juego->comentarios as $comentario)
-                    <li><img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon"><em>{{ $comentario->usuario?->nombre }} - </em>{{ $comentario->texto }}</li>
-                @endforeach
-            </ul>
-                    <!-- Formulario para añadir comentario -->
-                    <!-- Formulario para añadir comentario -->
-                    <form action="{{ route('addComment', ['juego_id' => $juego->id, 'usuario_id' => $usuario->id]) }}" method="POST">
-
-        @csrf
-        <textarea name="comentario" placeholder="Añadir un comentario"></textarea><br>
-        <button type="submit">Añadir comentario</button>
-        </form>
-        <form action="/juegos/favoritos/{{ $juego->id }}" method="POST">
-            @csrf
-            <input type="hidden" name="user_id" value="{{ $usuario->id }}">
-            <button type="submit" class="favorito-btn">Añadir a favoritos</button>
-        </form>
-
-
+            <div class="juego">
+                <h2>{{ $juego->nombre }}</h2>
+                <div class = "imagen">
+                    <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
                 </div>
-                </div>
+                <p><strong>Descripción:</strong>{{ $juego->descripcion }}</p>
+                <p><strong>Comentarios:</strong></p>
+                <ul>
+            @foreach($juego->comentarios as $comentario)
+                <li><img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon"><em>{{ $comentario->usuario?->nombre }} - </em>{{ $comentario->texto }}</li>
             @endforeach
+        </ul>
+                <!-- Formulario para añadir comentario -->
+                <!-- Formulario para añadir comentario -->
+                <form action="{{ route('addComment', ['juego_id' => $juego->id, 'usuario_id' => $usuario->id]) }}" method="POST">
 
-        </div>
+    @csrf
+    <textarea name="comentario" placeholder="Añadir un comentario"></textarea><br>
+    <button type="submit">Añadir comentario</button>
+    </form>
+    <form action="/juegos/favoritos/{{ $juego->id }}" method="POST">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ $usuario->id }}">
+        <button type="submit" class="favorito-btn">Añadir a favoritos</button>
+    </form>
+
+
+            </div>
+        @endforeach
+
+    </div>
 
     <script>
         function toggleDropdown() {
             document.querySelector('.dropdown-content').classList.toggle('hidden');
         }
-        function filterJuegos(filter) {
-            const userId = {{ $usuario->id }};
-            let url = '';
+        function mostrarFavoritos(){
 
-            if (filter === 'all') {
-                url = `/bienvenida/juegos/${userId}`;
-            } else if (filter === 'favorites') {
-                url = `/bienvenida/favoritos/${userId}`;
-            } else if (filter === 'recommended') {
-                url = `/bienvenida/recomendados/${userId}`;
-            }
-
-            fetch(url)
-
-                .then(response => response.text())
-                .then(html => {
-
-                    document.getElementById('juegos-container').innerHTML = html;
-                    console.log("hola");
-                })
-                .catch(error => console.error('Error:', error));
         }
 
         // Close the dropdown if the user clicks outside of it

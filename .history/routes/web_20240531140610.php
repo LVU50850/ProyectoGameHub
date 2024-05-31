@@ -16,6 +16,7 @@ Route::post('/bienvenida/registrarUsuario',[UsuarioController::class, 'registrar
 Route::get('/bienvenida/entrar',[UsuarioController::class,'entrar']);
 Route::post('/bienvenida/entrarUsuario',[UsuarioController::class,'entrarUsuario']);
 Route::get('/test/{id}',[TestController::class,'realizarTest']);
+Route::get('/bienvenida/juegos/{id}', [UsuarioController::class,'entrarJuegos']);
 Route::get('/bienvenida/juegosAdmin', [UsuarioController::class, 'entrarJuegosAdmin']);
 Route::post('/bienvenida/juegosAdminJuego', [JuegoController::class, 'guardarJuego']);
 Route::post('/subirJuegos/{id}',[TestController::class, 'subirJuegos']);
@@ -29,8 +30,7 @@ Route::delete('/juegos/{id}', [JuegoController::class, 'deleteJuego'])->name('de
 Route::delete('/comentarios/{id}', [JuegoController::class, 'deleteComment'])->name('deleteComment');
 Route::get('/bienvenida/juegosAdmin', [JuegoController::class, 'index'])->name('juegos.list');
 Route::post('/juegos/favoritos/{juego}', [JuegoController::class, 'addToFavorites']);
-Route::get('/bienvenida/juegos/{id}', [UsuarioController::class,'entrarJuegos']);
-Route::get('/bienvenida/favoritos/{id}', [UsuarioController::class, 'verFavoritos']);
-Route::get('/bienvenida/recomendados/{id}', [UsuarioController::class, 'verRecomendados']);
+Route::get('/favoritos/{id}', [JuegoController::class, 'verFavoritos'])->name('verFavoritos');
+Route::get('/recomendados/{id}', [JuegoController::class, 'verRecomendados'])
 
 

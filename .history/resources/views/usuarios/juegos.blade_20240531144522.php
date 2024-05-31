@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id = "juegos-container">
     <header>
         <div class="logo">GameHub</div>
         <div class="user-profile" onclick="toggleDropdown()">
@@ -63,7 +64,6 @@
         </div>
         <h1>Todos los juegos</h1>
         @foreach($juegos as $juego)
-            <div id = "juegos-container">
                 <div class="juego">
                     <h2>{{ $juego->nombre }}</h2>
                     <div class = "imagen">
@@ -92,11 +92,11 @@
 
 
                 </div>
-                </div>
+
             @endforeach
 
-        </div>
 
+</div>
     <script>
         function toggleDropdown() {
             document.querySelector('.dropdown-content').classList.toggle('hidden');

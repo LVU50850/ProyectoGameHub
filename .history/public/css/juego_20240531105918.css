@@ -97,7 +97,7 @@ button:hover {
     background-color: #ff1a1a;
 }
 .favorito-btn {
-    background-color: green;
+    background-color: #ff4d4d;
     color: white;
     padding: 2px 5px;
     cursor: pointer;
@@ -107,6 +107,7 @@ button:hover {
     text-align: center; /* Centra el texto dentro del botón */
     display: inline-block; /* Asegura que el botón se comporte correctamente */
     float: right; /* Posiciona el botón a la derecha */
+    margin-top: 10px; /* Añade un poco de margen superior para separación */
 }
 
 .favorito-btn:hover {
@@ -115,23 +116,5 @@ button:hover {
 
 form{
     all:unset;
-}
-
-.filter {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.filter label {
-    font-family: 'Bangers', cursive;
-    font-size: 18px;
-    margin-right: 10px;
-    color: #FFA500;
-}
-
-.filter input[type="radio"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
 }
 

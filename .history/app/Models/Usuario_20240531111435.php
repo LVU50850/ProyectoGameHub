@@ -20,6 +20,7 @@ class Usuario extends Model
     protected $attributes = [
         'juegos' => 'NOGAMES', // Valor por defecto para el campo 'usuario'
         'avatar' => 'images/HkvHlCy4hKeGc5I1hgayU962hrpqJX06hrPnzNvv.jpg',
+        'favoritos'=>[],
     ];
 
     protected $hidden = ['id'];

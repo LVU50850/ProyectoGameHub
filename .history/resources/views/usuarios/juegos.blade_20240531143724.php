@@ -63,7 +63,7 @@
         </div>
         <h1>Todos los juegos</h1>
         @foreach($juegos as $juego)
-            <div id = "juegos-container">
+            <div class = "juegos-container">
                 <div class="juego">
                     <h2>{{ $juego->nombre }}</h2>
                     <div class = "imagen">

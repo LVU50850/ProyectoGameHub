@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,11 +48,11 @@
         <div class="container">
         <div class="filter">
             <label>
-                <input type="radio" name="filter" value="all" checked onclick="filterJuegos('all')">
+                <input type="radio" name="filter" value="all" onclick="filterJuegos('all')">
                 Todos los juegos
             </label>
             <label>
-                <input type="radio" name="filter" value="favorites" onclick="filterJuegos('favorites')">
+                <input type="radio" name="filter" value="favorites" checked onclick="filterJuegos('favorites')">
                 Juegos favoritos
             </label>
             <label>
@@ -61,7 +60,7 @@
                 Juegos recomendados
             </label>
         </div>
-        <h1>Todos los juegos</h1>
+        <h1>Tus juegos favoritos</h1>
         @foreach($juegos as $juego)
             <div id = "juegos-container">
                 <div class="juego">
@@ -87,11 +86,9 @@
         <form action="/juegos/favoritos/{{ $juego->id }}" method="POST">
             @csrf
             <input type="hidden" name="user_id" value="{{ $usuario->id }}">
-            <button type="submit" class="favorito-btn">Añadir a favoritos</button>
         </form>
 
 
-                </div>
                 </div>
             @endforeach
 

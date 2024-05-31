@@ -63,39 +63,37 @@
         </div>
         <h1>Todos los juegos</h1>
         @foreach($juegos as $juego)
-            <div id = "juegos-container">
-                <div class="juego">
-                    <h2>{{ $juego->nombre }}</h2>
-                    <div class = "imagen">
-                        <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
-                    </div>
-                    <p><strong>Descripción:</strong>{{ $juego->descripcion }}</p>
-                    <p><strong>Comentarios:</strong></p>
-                    <ul>
-                @foreach($juego->comentarios as $comentario)
-                    <li><img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon"><em>{{ $comentario->usuario?->nombre }} - </em>{{ $comentario->texto }}</li>
-                @endforeach
-            </ul>
-                    <!-- Formulario para añadir comentario -->
-                    <!-- Formulario para añadir comentario -->
-                    <form action="{{ route('addComment', ['juego_id' => $juego->id, 'usuario_id' => $usuario->id]) }}" method="POST">
-
-        @csrf
-        <textarea name="comentario" placeholder="Añadir un comentario"></textarea><br>
-        <button type="submit">Añadir comentario</button>
-        </form>
-        <form action="/juegos/favoritos/{{ $juego->id }}" method="POST">
-            @csrf
-            <input type="hidden" name="user_id" value="{{ $usuario->id }}">
-            <button type="submit" class="favorito-btn">Añadir a favoritos</button>
-        </form>
-
-
+            <div class="juego">
+                <h2>{{ $juego->nombre }}</h2>
+                <div class = "imagen">
+                    <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
                 </div>
-                </div>
+                <p><strong>Descripción:</strong>{{ $juego->descripcion }}</p>
+                <p><strong>Comentarios:</strong></p>
+                <ul>
+            @foreach($juego->comentarios as $comentario)
+                <li><img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon"><em>{{ $comentario->usuario?->nombre }} - </em>{{ $comentario->texto }}</li>
             @endforeach
+        </ul>
+                <!-- Formulario para añadir comentario -->
+                <!-- Formulario para añadir comentario -->
+                <form action="{{ route('addComment', ['juego_id' => $juego->id, 'usuario_id' => $usuario->id]) }}" method="POST">
 
-        </div>
+    @csrf
+    <textarea name="comentario" placeholder="Añadir un comentario"></textarea><br>
+    <button type="submit">Añadir comentario</button>
+    </form>
+    <form action="/juegos/favoritos/{{ $juego->id }}" method="POST">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ $usuario->id }}">
+        <button type="submit" class="favorito-btn">Añadir a favoritos</button>
+    </form>
+
+
+            </div>
+        @endforeach
+
+    </div>
 
     <script>
         function toggleDropdown() {
@@ -117,9 +115,8 @@
 
                 .then(response => response.text())
                 .then(html => {
-
-                    document.getElementById('juegos-container').innerHTML = html;
                     console.log("hola");
+                    document.getElementById('juegos-container').innerHTML = html;
                 })
                 .catch(error => console.error('Error:', error));
         }
