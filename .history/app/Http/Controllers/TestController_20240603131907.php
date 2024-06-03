@@ -8,12 +8,9 @@ use App\Models\Juego;
 class TestController extends Controller
 {
     public function realizarTest($id){
-
         $usuario= Usuario::find($id);
-        if($usuario->recomendados == null){
-            return response()->view("usuarios.test",['usuario' => $usuario]);
-        }
-        return response()->view("usuarios.indexTest",["usuario"=> $usuario]);
+
+        return response()->view("usuarios.test",['usuario' => $usuario]);
     }
 
     public function submitTest(Request $request, $id)
@@ -42,11 +39,14 @@ class TestController extends Controller
             $usuario->recomendados = json_encode($juegos);
             $usuario->save();
 
+            return response()->json(['success' => true]);
+            $usuario= Usuario::find($id);
+
             $juegos = Juego::all();
 
 
 
-            return response()->view('usuarios.juegos',['usuario' => $usuario, 'juegos' => $juegos]);
+        return response()->view('usuarios.juegos',['usuario' => $usuario, 'juegos' => $juegos]);
         }
 
         return response()->json(['success' => false], 400);

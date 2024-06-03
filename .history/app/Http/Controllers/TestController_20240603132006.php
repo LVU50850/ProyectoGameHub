@@ -8,12 +8,9 @@ use App\Models\Juego;
 class TestController extends Controller
 {
     public function realizarTest($id){
-
         $usuario= Usuario::find($id);
-        if($usuario->recomendados == null){
-            return response()->view("usuarios.test",['usuario' => $usuario]);
-        }
-        return response()->view("usuarios.indexTest",["usuario"=> $usuario]);
+
+        return response()->view("usuarios.test",['usuario' => $usuario]);
     }
 
     public function submitTest(Request $request, $id)

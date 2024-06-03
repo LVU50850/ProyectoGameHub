@@ -6,23 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function showQuestion(index, category) {
         const questions = document.querySelectorAll(`.${category} .question`);
         questions.forEach((question, i) => {
-            question.classList.remove('active');
             if (i === index) {
                 question.classList.add('active');
             }
         });
-    }
-
-    function updateAnswerCount(selectedClass) {
-        if (selectedClass.includes('respuesta1')) {
-            answersCount[0]++;
-        } else if (selectedClass.includes('respuesta2')) {
-            answersCount[1]++;
-        } else if (selectedClass.includes('respuesta3')) {
-            answersCount[2]++;
-        } else if (selectedClass.includes('respuesta4')) {
-            answersCount[3]++;
-        }
     }
 
     window.handleFirstQuestion = () => {
@@ -40,11 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showNextQuestion = (category) => {
         const questions = document.querySelectorAll(`.${category} .question`);
         if (currentQuestionIndex < questions.length - 1) {
-            const selectedAnswer = document.querySelector(`.${category} .question.active input[type="radio"]:checked`);
-            if (selectedAnswer) {
-                updateAnswerCount(selectedAnswer.className);
-            }
-
             currentQuestionIndex++;
             showQuestion(currentQuestionIndex, category);
         } else {

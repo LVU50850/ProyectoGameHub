@@ -146,7 +146,6 @@
                 <button onclick="showPreviousQuestion('played-questions')">Anterior</button>
             </div>
 
-
             <div class="question">
                 <p class="question-text">¿Cuál de estos te gusta más?</p>
                 <div class="answers">

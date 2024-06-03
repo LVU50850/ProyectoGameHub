@@ -12,8 +12,9 @@ class TestController extends Controller
         $usuario= Usuario::find($id);
         if($usuario->recomendados == null){
             return response()->view("usuarios.test",['usuario' => $usuario]);
+        }else{
+
         }
-        return response()->view("usuarios.indexTest",["usuario"=> $usuario]);
     }
 
     public function submitTest(Request $request, $id)

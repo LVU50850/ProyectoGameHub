@@ -22,9 +22,7 @@ class Usuario extends Model
         'avatar' => 'images/HkvHlCy4hKeGc5I1hgayU962hrpqJX06hrPnzNvv.jpg',
     ];
 
-    protected $casts =
-        ["recomendados" => "array",];
-
+    protected $casts = {["recomendades" => "array",}];}
 
     protected $hidden = ['id'];
 

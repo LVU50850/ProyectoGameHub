@@ -23,7 +23,7 @@ class Usuario extends Model
     ];
 
     protected $casts =
-        ["recomendados" => "array",];
+        ["recomendades" => "array",];
 
 
     protected $hidden = ['id'];

@@ -146,7 +146,6 @@
                 <button onclick="showPreviousQuestion('played-questions')">Anterior</button>
             </div>
 
-
             <div class="question">
                 <p class="question-text">¿Cuál de estos te gusta más?</p>
                 <div class="answers">
@@ -207,6 +206,10 @@
                 <button id="submit-test" type="button">Enviar Test</button>
             </div>
         </div>
+        <div class = "question">
+                <input type="hidden" name="id" value="{{ $usuario->id }}">
+                <button id="submit-test" type="button">Enviar Test</button>
+            </div>
 
 </div>
     </div>

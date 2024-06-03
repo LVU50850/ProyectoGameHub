@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let currentQuestionIndex = 0;
     let currentCategory = null;
-    let answersCount = [0, 0, 0, 0]; // Contador para cada tipo de respuesta
+    let answersCount = [0, 0, 0, 0];
 
     function showQuestion(index, category) {
         const questions = document.querySelectorAll(`.${category} .question`);
@@ -11,18 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 question.classList.add('active');
             }
         });
-    }
-
-    function updateAnswerCount(selectedClass) {
-        if (selectedClass.includes('respuesta1')) {
-            answersCount[0]++;
-        } else if (selectedClass.includes('respuesta2')) {
-            answersCount[1]++;
-        } else if (selectedClass.includes('respuesta3')) {
-            answersCount[2]++;
-        } else if (selectedClass.includes('respuesta4')) {
-            answersCount[3]++;
-        }
     }
 
     window.handleFirstQuestion = () => {
@@ -40,15 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showNextQuestion = (category) => {
         const questions = document.querySelectorAll(`.${category} .question`);
         if (currentQuestionIndex < questions.length - 1) {
-            const selectedAnswer = document.querySelector(`.${category} .question.active input[type="radio"]:checked`);
+            // Contabilizar la respuesta seleccionada
+            const selectedAnswer = questions[currentQuestionIndex].querySelector('input[type="radio"]:checked');
             if (selectedAnswer) {
-                updateAnswerCount(selectedAnswer.className);
+                const answerClass = selectedAnswer.classList[0];
+                const answerIndex = parseInt(answerClass.replace('respuesta', ''), 10) - 1;
+                answersCount[answerIndex]++;
             }
-
             currentQuestionIndex++;
             showQuestion(currentQuestionIndex, category);
-        } else {
-            submitTest();
         }
     };
 
@@ -62,9 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('submit-test').addEventListener('click', () => {
         const maxCount = Math.max(...answersCount);
         const mostSelected = answersCount.indexOf(maxCount) + 1;
-        const userId = document.querySelector('input[name="id"]').value;
 
-        fetch(`/submit-test/${userId}`, {
+        fetch('/submit-test', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert('Hubo un error al enviar el test.');
             }
-        })
-        .catch(error => console.error('Error:', error));
+        });
     });
 });

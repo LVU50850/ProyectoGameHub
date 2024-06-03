@@ -13,16 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function updateAnswerCount(selectedClass) {
-        if (selectedClass.includes('respuesta1')) {
-            answersCount[0]++;
-        } else if (selectedClass.includes('respuesta2')) {
-            answersCount[1]++;
-        } else if (selectedClass.includes('respuesta3')) {
-            answersCount[2]++;
-        } else if (selectedClass.includes('respuesta4')) {
-            answersCount[3]++;
-        }
+    function updateAnswerCount(selectedIndex) {
+        answersCount[selectedIndex]++;
     }
 
     window.handleFirstQuestion = () => {
@@ -42,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentQuestionIndex < questions.length - 1) {
             const selectedAnswer = document.querySelector(`.${category} .question.active input[type="radio"]:checked`);
             if (selectedAnswer) {
-                updateAnswerCount(selectedAnswer.className);
+                const answerIndex = parseInt(selectedAnswer.value) - 1;
+                updateAnswerCount(answerIndex);
             }
 
             currentQuestionIndex++;

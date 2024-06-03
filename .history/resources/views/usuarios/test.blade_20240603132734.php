@@ -145,7 +145,10 @@
                 <button onclick="showNextQuestion('played-questions')">Siguiente</button>
                 <button onclick="showPreviousQuestion('played-questions')">Anterior</button>
             </div>
-
+            <div class = "question">
+                <input type="hidden" name="id" value="{{ $usuario->id }}">
+                <button id="submit-test" type="button">Enviar Test</button>
+            </div>
 
             <div class="question">
                 <p class="question-text">¿Cuál de estos te gusta más?</p>

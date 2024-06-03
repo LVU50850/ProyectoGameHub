@@ -13,18 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function updateAnswerCount(selectedClass) {
-        if (selectedClass.includes('respuesta1')) {
-            answersCount[0]++;
-        } else if (selectedClass.includes('respuesta2')) {
-            answersCount[1]++;
-        } else if (selectedClass.includes('respuesta3')) {
-            answersCount[2]++;
-        } else if (selectedClass.includes('respuesta4')) {
-            answersCount[3]++;
-        }
-    }
-
     window.handleFirstQuestion = () => {
         const hasPlayed = document.querySelector('input[name="has_played"]:checked').value;
         if (hasPlayed === 'si') {
@@ -40,11 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showNextQuestion = (category) => {
         const questions = document.querySelectorAll(`.${category} .question`);
         if (currentQuestionIndex < questions.length - 1) {
-            const selectedAnswer = document.querySelector(`.${category} .question.active input[type="radio"]:checked`);
-            if (selectedAnswer) {
-                updateAnswerCount(selectedAnswer.className);
-            }
-
             currentQuestionIndex++;
             showQuestion(currentQuestionIndex, category);
         } else {
@@ -62,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('submit-test').addEventListener('click', () => {
         const maxCount = Math.max(...answersCount);
         const mostSelected = answersCount.indexOf(maxCount) + 1;
-        const userId = document.querySelector('input[name="id"]').value;
+        const userId = document.querySelector('input[name="user_id"]').value;
 
         fetch(`/submit-test/${userId}`, {
             method: 'POST',

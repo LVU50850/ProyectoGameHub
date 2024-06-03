@@ -13,18 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function updateAnswerCount(selectedClass) {
-        if (selectedClass.includes('respuesta1')) {
-            answersCount[0]++;
-        } else if (selectedClass.includes('respuesta2')) {
-            answersCount[1]++;
-        } else if (selectedClass.includes('respuesta3')) {
-            answersCount[2]++;
-        } else if (selectedClass.includes('respuesta4')) {
-            answersCount[3]++;
-        }
-    }
-
     window.handleFirstQuestion = () => {
         const hasPlayed = document.querySelector('input[name="has_played"]:checked').value;
         if (hasPlayed === 'si') {
@@ -32,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             currentCategory = 'not-played-questions';
         }
-        document.querySelector('.question.active').classList.remove('active');
         document.querySelector(`.${currentCategory}`).classList.remove('hidden');
         showQuestion(0, currentCategory);
     };
@@ -40,11 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showNextQuestion = (category) => {
         const questions = document.querySelectorAll(`.${category} .question`);
         if (currentQuestionIndex < questions.length - 1) {
-            const selectedAnswer = document.querySelector(`.${category} .question.active input[type="radio"]:checked`);
-            if (selectedAnswer) {
-                updateAnswerCount(selectedAnswer.className);
-            }
-
             currentQuestionIndex++;
             showQuestion(currentQuestionIndex, category);
         } else {

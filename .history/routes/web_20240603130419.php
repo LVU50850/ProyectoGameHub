@@ -32,6 +32,6 @@ Route::post('/juegos/favoritos/{juego}', [JuegoController::class, 'addToFavorite
 Route::get('/bienvenida/juegos/{id}', [UsuarioController::class,'entrarJuegos']);
 Route::get('/bienvenida/favoritos/{id}', [UsuarioController::class, 'verFavoritos']);
 Route::get('/bienvenida/recomendados/{id}', [UsuarioController::class, 'verRecomendados']);
-Route::post('/submit-test/{id}', [TestController::class, 'submitTest']);
+Route::post('/submit-test', [TestController::class, 'submitTest']);
 
 
