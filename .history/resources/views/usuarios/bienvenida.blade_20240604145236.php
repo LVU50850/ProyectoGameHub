@@ -6,17 +6,6 @@
     <title>Bienvenida - GameHub</title>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-    <style>
-        .alert-success {
-            color: #155724;
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid transparent;
-            border-radius: 4px;
-        }
-    </style>
 </head>
 <body>
     <div class="welcome-container">

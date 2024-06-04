@@ -60,7 +60,8 @@ class UsuarioController extends Controller
         ]);
 
         $usuario->save();
-        return redirect()->route('index')->with('success', 'Usuario registrado con éxito');
+
+        return response()->view("usuarios.bienvenida", "texto"=>"Usuario registrado con éxito");
     }
 
     public function entrar(){

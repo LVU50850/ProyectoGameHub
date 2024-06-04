@@ -204,7 +204,7 @@
             </div>
             <div>
                 <input type="hidden" name="id" value="{{ $usuario->id }}">
-                <button id="submit-test" type="button" class = "button">Enviar Test</button>
+                <button id="submit-test" type="button">Enviar Test</button>
             </div>
     </div>
 

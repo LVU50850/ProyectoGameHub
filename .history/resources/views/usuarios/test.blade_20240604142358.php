@@ -113,9 +113,13 @@
                     <label><input type="radio" name="answer14" class = "respuesta3"> Desafíos de exploración y descubrimiento </label><br>
                     <label><input type="radio" name="answer14" class = "respuesta4"> Desafíos sociales y de cooperación</label><br>
                 </div>
+                <button onclick="showNextQuestion('not-played-questions')">Siguiente</button>
                 <button onclick="showPreviousQuestion('not-played-questions')">Anterior</button>
             </div>
-
+            <div class = "question">
+                <input type="hidden" name="id" value="{{ $usuario->id }}">
+                <button class="submit-test-non-played" type="button">Enviar Test</button>
+            </div>
 
 
         </div>
@@ -200,11 +204,12 @@
                     <label><input type="radio" name="answer10" class = "respuesta3"> Actualizaciones gratuitas</label><br>
                     <label><input type="radio" name="answer10" class = "respuesta4"> Mods creados por la comunidad</label><br>
                 </div>
+                <button onclick="showNextQuestion('played-questions')">Siguiente</button>
                 <button onclick="showPreviousQuestion('played-questions')">Anterior</button>
             </div>
-            <div>
+            <div class = "question">
                 <input type="hidden" name="id" value="{{ $usuario->id }}">
-                <button id="submit-test" type="button" class = "button">Enviar Test</button>
+                <button class="submit-test-played" type="button">Enviar Test</button>
             </div>
     </div>
 
