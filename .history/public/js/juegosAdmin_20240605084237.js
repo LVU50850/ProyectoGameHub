@@ -12,7 +12,8 @@ function generarFormulario() {
     nombreInput.setAttribute('name', 'nombre');
     nombreInput.setAttribute('placeholder', 'Nombre del juego');
 
-    const descripcionInput = document.createElement('textarea');
+    const descripcionInput = document.createElement('input');
+    descripcionInput.setAttribute('type','text');
     descripcionInput.setAttribute('name', 'descripcion');
     descripcionInput.setAttribute('placeholder', 'Descripcion del juego');
 

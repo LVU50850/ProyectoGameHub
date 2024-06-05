@@ -12,10 +12,10 @@
             text-align:center;
         }
         .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
     </style>
 </head>
 <body>
@@ -29,7 +29,7 @@
         <div class="juego">
             <h2 class = "centrar">{{ $juego->nombre }}</h2>
             <div class="image-container">
-                <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: 300px;">
+                <img class="centrar" src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
             </div>
             <p><strong>Descripcion:</strong> {{ $juego->descripcion }}</p>
             <p><strong>Comentarios:</strong></p>

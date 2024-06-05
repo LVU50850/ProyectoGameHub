@@ -7,31 +7,19 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/juego.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-    <style>
-        .centrar{
-            text-align:center;
-        }
-        .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
 </head>
 <body>
 <header>
-    <a class = "enlace" href = "/bienvenida"><div class="logo">GameHub</div></a>
+    <a class="enlace" href="/bienvenida"><div class="logo">GameHub</div></a>
 </header>
 <div class="container">
     <br><br>
     <h1>Listado de juegos</h1>
     @foreach($juegos as $juego)
         <div class="juego">
-            <h2 class = "centrar">{{ $juego->nombre }}</h2>
-            <div class="image-container">
-                <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: 300px;">
-            </div>
-            <p><strong>Descripcion:</strong> {{ $juego->descripcion }}</p>
+            <h2>{{ $juego->nombre }}</h2>
+            <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->nombre }}" style="width: 200px; height: auto;">
+            <p><strong>Descripción:</strong> {{ $juego->descripcion }}</p>
             <p><strong>Comentarios:</strong></p>
             <ul>
                 @foreach($juego->comentarios as $comentario)
@@ -55,9 +43,7 @@
 </div>
 <button id="addGameButton">Añadir juego</button>
 <div id="gameFormContainer">
-    <form id="gameForm" method="POST" action="/bienvenida/juegosAdminJuego" enctype="multipart/form-data">
-        @csrf
-    </form>
+    <!-- El formulario será insertado aquí por el script JS -->
 </div>
 <script src="{{ asset('js/juegosAdmin.js') }}"></script>
 </body>
