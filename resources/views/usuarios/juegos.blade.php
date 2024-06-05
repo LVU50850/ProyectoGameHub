@@ -14,15 +14,15 @@
     <header>
         <div class="logo">GameHub</div>
         <div class="user-profile" onclick="toggleDropdown()">
-            <img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon">
-            <span>{{ $usuario->nombre }}</span>
-            <div class="dropdown-content hidden">
-                <a href="/perfil/{{$usuario->id}}">Mi perfil</a>
-                <a href="/bienvenida/juegos/{{$usuario->id}}">Juegos</a>
-                <a href="/bienvenida/recomendados/{{$usuario->id}}">Recomendados</a>
-                <a class = "alert alert-danger" href = "/bienvenida">Cerrar sesión</a>
+            <img class="imagen-juego" src="{{ asset('storage/' . $usuario->avatar) }}" alt="{{ $usuario->nombre }}">
+                <span>{{ $usuario->nombre }}</span>
+                <div class="dropdown-content hidden">
+                    <a href="/perfil/{{$usuario->id}}">Mi perfil</a>
+                    <a href="/bienvenida/juegos/{{$usuario->id}}">Juegos</a>
+                    <a href="/bienvenida/recomendados/{{$usuario->id}}">Recomendados</a>
+                    <a class = "alert alert-danger" href = "/bienvenida">Cerrar sesión</a>
+                </div>
             </div>
-        </div>
     </header>
     <br><br><br><br>
     <!-- Mostrar mensajes de éxito -->

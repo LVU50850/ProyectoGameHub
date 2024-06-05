@@ -134,3 +134,19 @@ input[type="submit"]:hover {
 .enlace{
     text-decoration: none;
 }
+
+
+.imagen-juego {
+    width: 200px;
+    height: 200px; /* Ajusta esto según tus necesidades */
+    object-fit: cover; /* Esto se asegura de que la imagen cubra todo el contenedor sin distorsión */
+    display: block; /* Asegura que las imágenes sean elementos de bloque */
+    margin: 0 auto; /* Centra las imágenes horizontalmente */
+}
+
+/* Estilos CSS para la imagen del perfil en la cabecera */
+.imagen-juego {
+    width: 50px; /* Ancho deseado de la imagen */
+    height: 50px; /* Altura deseada de la imagen */
+    border-radius: 50%; /* Para que la imagen tenga forma circular */
+}

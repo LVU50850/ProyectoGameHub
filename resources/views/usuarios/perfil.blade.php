@@ -13,7 +13,7 @@
 <header>
         <div class="logo">GameHub</div>
         <div class="user-profile" onclick="toggleDropdown()">
-            <img src="{{ asset('storage/' . $usuario->avatar) }}" alt="Perfil" class="profile-icon">
+        <img class="imagen-juego" src="{{ asset('storage/' . $usuario->avatar) }}" alt="{{ $usuario->nombre }}">
             <span>{{ $usuario->nombre }}</span>
             <div class="dropdown-content hidden">
                 <a href="/perfil/{{$usuario->id}}">Mi perfil</a>

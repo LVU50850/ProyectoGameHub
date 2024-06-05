@@ -28,8 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.handleFirstQuestion = () => {
         const hasPlayed = document.querySelector('input[name="has_played"]:checked').value;
         if (hasPlayed === 'si') {
+            document.getElementById("submit-test").classList.remove("hidden");
+            document.getElementById("submit-test").classList.remove("button");
             currentCategory = 'played-questions';
         } else {
+            document.getElementById("submit-test").classList.remove("hidden");
+            document.getElementById("submit-test").classList.remove("button");
             currentCategory = 'not-played-questions';
         }
         document.querySelector('.question.active').classList.remove('active');

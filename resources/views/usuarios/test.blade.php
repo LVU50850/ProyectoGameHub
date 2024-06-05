@@ -202,14 +202,15 @@
                 </div>
                 <button onclick="showPreviousQuestion('played-questions')">Anterior</button>
             </div>
-            <div>
-                <input type="hidden" name="id" value="{{ $usuario->id }}">
-                <button id="submit-test" type="button" class = "button">Enviar Test</button>
-            </div>
+            
     </div>
 
         </div>
-
+        <div>
+                <input type="hidden" name="id" value="{{ $usuario->id }}">
+                <button id="submit-test" type="button" class = "hidden">Enviar Test</button>
+            </div>
+        
 </div>
 
 

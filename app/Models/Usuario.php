@@ -19,7 +19,7 @@ class Usuario extends Model
 
     protected $attributes = [
         'juegos' => ' ', // Valor por defecto para el campo 'usuario'
-        'avatar' => 'images/HkvHlCy4hKeGc5I1hgayU962hrpqJX06hrPnzNvv.jpg',
+        'avatar' => 'images/53zEj3U30oqN0OWZ1KZyMRifjxhWkDnPEl9afr9r.jpg',
     ];
 
     protected $casts =
